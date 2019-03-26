@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>no websocket chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font: 13px Helvetica, Arial;
+    }
+
+    div {
+      background: #000;
+      width: 100%;
+      position: fixed;
+      bottom: 0;
+      padding: 3px;
+    }
+
+    form {
+      display: inline;
+      padding: 3px;
+    }
+
+    form input {
+      border: 0;
+      padding: 10px;
+      width: 80%;
+      margin-right: .5%;
+    }
+
+    form button {
+      width: 9%;
+      background: rgb(130, 224, 255);
+      border: none;
+      padding: 10px;
+    }
+
+    #messages {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #messages li {
+      padding: 5px 10px;
+    }
+
+    #messages li:nth-child(odd) {
+      background: #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="messages">
+    <li>Powered by Franz-NET : <a href="https://franz-net.hr/">https://franz-net.hr/</a></li>
+    <% for(var i = 0; i < messages.length; i++) { %>
+    <li> <%= messages[i].author + " : " + messages[i].msg  %> </li>
+    <% } %>
+
+  </ul>
+
+  <div>
+    <form action="/send_message" method="POST">
+      <input type="text" name="newmessage" required />
+      <input id="a" type="hidden" name="author" />
+      <button>Send</button>
+    </form>
+
+    <form action="/chat" method="GET">
+      <button>Get Messages</button>
+    </form>
+  </div>
+
+  <script>document.getElementById('a').value = sessionStorage.getItem("username");</script>
+</body>
+
+
+</html>

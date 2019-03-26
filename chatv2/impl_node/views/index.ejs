@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>websocket chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font: 13px Helvetica, Arial;
+    }
+
+    .wrapper {
+      margin-left: 40%;
+      margin-top: 20%;
+    }
+
+    div {
+      padding: 15px 32px;
+      font-size: 20px
+    }
+
+    input {
+      padding: 15px 32px;
+      font-size: 20px
+    }
+
+    .button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div>Choose your username</div>
+    <form action="/messages" method="POST">
+      <input type="text" name="loginInfo" id="loginId" />
+      <button onclick="saveToLocal()" class="button">Login</button>
+    </form>
+
+  </div>Í
+
+
+  <script>
+    function saveToLocal() {
+      let username = document.getElementById('loginId').value
+      console.log('username', username)
+      sessionStorage.setItem("username", username)
+    }
+  </script>
+</body>
+
+
+</html>
